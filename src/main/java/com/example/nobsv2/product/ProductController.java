@@ -1,12 +1,9 @@
 package com.example.nobsv2.product;
 
-import com.example.nobsv2.exceptions.ProductNotFoundException;
-import com.example.nobsv2.product.model.ErrorResponse;
 import com.example.nobsv2.product.model.Product;
 import com.example.nobsv2.product.model.ProductDTO;
 import com.example.nobsv2.product.model.UpdateProductCommand;
 import com.example.nobsv2.product.services.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +38,6 @@ public class ProductController {
         this.searchProductService = searchProductService;
     }
 
-
-
     @PostMapping("/product")
     public ResponseEntity<ProductDTO> createProduct(@RequestBody Product product){
         return createProductService.execute(product);
@@ -53,7 +48,7 @@ public class ProductController {
         return getProductsService.execute(null);
     }
 
-    //new get mapping for find by Id
+    //new get mapping for find by id
 
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id){
